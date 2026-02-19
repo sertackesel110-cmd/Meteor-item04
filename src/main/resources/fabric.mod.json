@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "debris-tracer",
+  "version": "${version}",
+  "name": "Debris Tracer",
+  "description": "Traces Ancient Debris items on the ground.",
+  "authors": ["Sertac04"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "meteor-client": ["com.sertac.debris.Addon"]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.3",
+    "minecraft": "~1.21.4",
+    "java": ">=21",
+    "meteor-client": "*"
+  }
+}
+
