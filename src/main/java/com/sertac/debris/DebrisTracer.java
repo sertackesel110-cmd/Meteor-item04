@@ -1,7 +1,7 @@
 package com.sertac.debris;
 
 import meteordevelopment.meteorclient.events.render.Render3DEvent;
-import meteordevelopment.meteorclient.renderer.RenderUtils;
+import meteordevelopment.meteorclient.renderer.RenderUtils3D;
 import meteordevelopment.meteorclient.settings.ColorSetting;
 import meteordevelopment.meteorclient.settings.Setting;
 import meteordevelopment.meteorclient.settings.SettingGroup;
@@ -29,7 +29,7 @@ public class DebrisTracer extends Module {
     @EventHandler
     private void onRender(Render3DEvent event) {
         if (mc.world == null) return;
-        
+
         for (Entity entity : mc.world.getEntities()) {
             if (!(entity instanceof ItemEntity item)) continue;
 
@@ -38,8 +38,9 @@ public class DebrisTracer extends Module {
                 double y = item.prevY + (item.getY() - item.prevY) * event.tickDelta;
                 double z = item.prevZ + (item.getZ() - item.prevZ) * event.tickDelta;
 
+                // RenderUtils yerine RenderUtils3D kullanıyoruz
                 event.renderer.line(
-                        RenderUtils.getCenter().x, RenderUtils.getCenter().y, RenderUtils.getCenter().z,
+                        RenderUtils3D.getCenter().x, RenderUtils3D.getCenter().y, RenderUtils3D.getCenter().z,
                         x, y + 0.2, z,
                         color.get()
                 );
@@ -47,4 +48,3 @@ public class DebrisTracer extends Module {
         }
     }
 }
-
