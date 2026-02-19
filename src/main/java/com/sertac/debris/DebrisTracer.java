@@ -17,13 +17,13 @@ public class DebrisTracer extends Module {
 
     private final Setting<SettingColor> color = sgGeneral.add(new ColorSetting.Builder()
             .name("color")
-            .description("Tracer color for Ancient Debris.")
+            .description("Ancient Debris takip çizgisi rengi.")
             .defaultValue(new SettingColor(255, 165, 0, 255))
             .build()
     );
 
     public DebrisTracer() {
-        super(Addon.CATEGORY, "debris-tracer", "Draws a line to Ancient Debris items on the ground.");
+        super(Addon.CATEGORY, "debris-tracer", "Yerdeki Antik Kalıntıları çizgilerle gösterir.");
     }
 
     @EventHandler
@@ -38,7 +38,6 @@ public class DebrisTracer extends Module {
                 double y = item.prevY + (item.getY() - item.prevY) * event.tickDelta;
                 double z = item.prevZ + (item.getZ() - item.prevZ) * event.tickDelta;
 
-                // RenderUtils yerine RenderUtils3D kullanıyoruz
                 event.renderer.line(
                         RenderUtils3D.getCenter().x, RenderUtils3D.getCenter().y, RenderUtils3D.getCenter().z,
                         x, y + 0.2, z,
